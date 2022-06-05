@@ -1,4 +1,4 @@
-package onedem_array;
+package datastructure.arrayandlist;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
