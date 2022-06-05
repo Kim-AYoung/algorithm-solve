@@ -21,10 +21,9 @@ public class Buffered_Reader_Writer_Example {
 			int b = Integer.parseInt(st.nextToken());
 			int c = Integer.parseInt(st.nextToken());
 			
-			bw.write(a + b + c + "\n");
+			bw.write(a + " " + b + " " +  c + "\n"); // 성능은 String의 +연산자 보다 StringBuilder가 좋음
 		}
-		bw.flush();
-		
+
 		//? (한 줄)
 		for(int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -57,8 +56,7 @@ public class Buffered_Reader_Writer_Example {
 			}
 			
 		}
-		bw.flush();
-		
+
 		/* 2차원 array */
 		//input :
 		//column row
