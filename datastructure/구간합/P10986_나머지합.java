@@ -13,29 +13,27 @@ public class P10986_나머지합 {
         st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-        long[] sumArr = new long[N];
+        long[] S = new long[N];
+        long[] C = new long[M];
         long answer = 0;
 
         st = new StringTokenizer(br.readLine());
-        for(int i=0; i<N; i++) {
-            long num = Integer.parseInt(st.nextToken());
-            sumArr[i] = i==0 ? num : sumArr[i-1] + num;
+        S[0] = Integer.parseInt(st.nextToken());
+        for(int i=1; i<N; i++) {
+            S[i] = S[i-1] + Integer.parseInt(st.nextToken());
         }
 
-        int[] countRemainderOfMInSumArr = new int[M];
-
         for(int i=0; i<N; i++) {
-            int remainder = (int)(sumArr[i] % M);
-            countRemainderOfMInSumArr[remainder]++;
-            if(remainder == 0) {
+            int remainder = (int) (S[i] % M);
+            C[remainder]++;
+            if(remainder == 0)
                 answer++;
-            }
         }
 
         for(int i=0; i<M; i++) {
-            int count = countRemainderOfMInSumArr[i];
+            long count = C[i];
             if(count > 1) {
-                int combination = (count * (count-1) / 2);
+                long combination = (count * (count-1) / 2);
                 answer += combination;
             }
         }
