@@ -5,11 +5,16 @@ import java.util.*;
 
 public class Buffered_Reader_Writer_Example {
 	
-	private static final BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	private static final BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 	public static void main(String[] args) throws Exception{
 
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
 		StringTokenizer st;
+
+		StringBuilder sb = new StringBuilder();
 		
 		/* n번 입력 받음 */	
 		int n = Integer.parseInt(br.readLine());						
