@@ -12,7 +12,7 @@
 
 : 연산 횟수
 
-- 1억 번의 연산 = 1초
+- 1억 번의 연산(100,000,000) = 1초
 - 알고리즘 선택 기준으로 사용
 
 ## 종류
@@ -28,7 +28,7 @@
 
 - 상수는 제외
 
-# Tip! 
+# Tip!
 
 1. `int` 대신 `long` 을 사용하자
 2. 문제에서 인덱스가 `0`이 아닌 `1`부터 시작한다면, 배열에서도 같은 방식을 따르는게 좋음
@@ -37,7 +37,7 @@
 
 - 입력 : `Scanner`→ `BufferedReader`
 - 출력 : `System.out.print` → `BufferedWriter`
-- 문자열 합치기 : String class의 + → `StringBuilder`
+- 문자열 합치기 : `String class의 +` → `StringBuilder`
 
 # 알고리즘 종류
 
@@ -45,3 +45,4 @@
 
 - 배열과 리스트
 - 구간 합
+- 투 포인터
