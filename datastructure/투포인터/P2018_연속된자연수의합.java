@@ -17,6 +17,8 @@ public class P2018_연속된자연수의합 {
                 count++;
                 end_index++;
                 sum += end_index;
+                sum -= start_index;
+                start_index++;
             }else if(sum > N) {
                 sum -= start_index;
                 start_index++;
