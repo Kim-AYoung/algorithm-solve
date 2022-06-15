@@ -6,80 +6,96 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class P12891_DNA비밀번호 {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
+    static int checkArr[];
+    static int myArr[];
+    static int checkSecret;
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(bf.readLine());
 
         int S = Integer.parseInt(st.nextToken());
         int P = Integer.parseInt(st.nextToken());
-        char[] chars = br.readLine().toCharArray();
-        st = new StringTokenizer(br.readLine());
-        int ANum = Integer.parseInt(st.nextToken());
-        int CNum = Integer.parseInt(st.nextToken());
-        int GNum = Integer.parseInt(st.nextToken());
-        int TNum = Integer.parseInt(st.nextToken());
-        int[] charNumInSlidingWindow = new int[4]; // A C G T
-        int count = 0;
+        int Result = 0;
+        char A[] = bf.readLine().toCharArray();
 
-        int startIdx = 0;
-        int endIdx = P-1;
-        for(int i=startIdx; i<=endIdx; i++) {
-            switch (chars[i]) {
-                case 'A':
-                    charNumInSlidingWindow[0]++;
-                    break;
-                case 'C':
-                    charNumInSlidingWindow[1]++;
-                    break;
-                case 'G':
-                    charNumInSlidingWindow[2]++;
-                    break;
-                case 'T':
-                    charNumInSlidingWindow[3]++;
-                    break;
-            }
+        checkArr = new int[4];
+        myArr = new int[4];
+        checkSecret = 0;
+        st = new StringTokenizer(bf.readLine());
+        for (int i = 0; i < 4; i++) {
+            checkArr[i] = Integer.parseInt(st.nextToken());
+            if (checkArr[i] == 0)
+                checkSecret++;
         }
 
-        while (endIdx < S){
-            if(startIdx > 0) {
-                switch (chars[startIdx-1]) {
-                    case 'A':
-                        charNumInSlidingWindow[0]--;
-                        break;
-                    case 'C':
-                        charNumInSlidingWindow[1]--;
-                        break;
-                    case 'G':
-                        charNumInSlidingWindow[2]--;
-                        break;
-                    case 'T':
-                        charNumInSlidingWindow[3]--;
-                        break;
-                }
-                switch (chars[endIdx]) {
-                    case 'A':
-                        charNumInSlidingWindow[0]++;
-                        break;
-                    case 'C':
-                        charNumInSlidingWindow[1]++;
-                        break;
-                    case 'G':
-                        charNumInSlidingWindow[2]++;
-                        break;
-                    case 'T':
-                        charNumInSlidingWindow[3]++;
-                        break;
-                }
-            }
-            if(charNumInSlidingWindow[0] >= ANum && charNumInSlidingWindow[1] >= CNum && charNumInSlidingWindow[2] >= GNum && charNumInSlidingWindow[3] >= TNum) {
-                count++;
-            }
-            startIdx++;
-            endIdx++;
+        // 초기 P부분 문자열 처리 부분
+        for (int i = 0; i < P; i++) {
+            Add(A[i]);
+        }
+        if (checkSecret == 4)
+            Result++;
+
+        // 슬라이딩 윈도우 처리 부분
+        for (int i = P; i < S; i++) {
+            int j = i - P;
+            Add(A[i]);
+            Remove(A[j]);
+            if (checkSecret == 4)
+                Result++;
         }
 
-        System.out.println(count);
+        System.out.println(Result);
+        bf.close();
+    }
 
-        br.close();
+    private static void Add(char c) {
+        switch (c) {
+            case 'A':
+                myArr[0]++;
+                if (myArr[0] == checkArr[0])
+                    checkSecret++;
+                break;
+            case 'C':
+                myArr[1]++;
+                if (myArr[1] == checkArr[1])
+                    checkSecret++;
+                break;
+            case 'G':
+                myArr[2]++;
+                if (myArr[2] == checkArr[2])
+                    checkSecret++;
+                break;
+            case 'T':
+                myArr[3]++;
+                if (myArr[3] == checkArr[3])
+                    checkSecret++;
+                break;
+        }
+    }
+
+    private static void Remove(char c) {
+        switch (c) {
+            case 'A':
+                if (myArr[0] == checkArr[0])
+                    checkSecret--;
+                myArr[0]--;
+                break;
+            case 'C':
+                if (myArr[1] == checkArr[1])
+                    checkSecret--;
+                myArr[1]--;
+                break;
+            case 'G':
+                if (myArr[2] == checkArr[2])
+                    checkSecret--;
+                myArr[2]--;
+                break;
+            case 'T':
+                if (myArr[3] == checkArr[3])
+                    checkSecret--;
+                myArr[3]--;
+                break;
+        }
     }
 }
