@@ -1,4 +1,4 @@
-package datastructure.arrayandlist;
+package datastructure.배열과리스트;
 
 import java.util.Scanner;
 
