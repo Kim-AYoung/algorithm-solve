@@ -2,48 +2,46 @@ package datastructure.스택과큐;
 
 import java.io.*;
 import java.util.Stack;
-
 public class P1874_스택수열 {
-
     public static void main(String[] args) throws IOException {
-        BufferedReader  br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter  bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringBuffer sb = new StringBuffer();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        int n = Integer.parseInt(br.readLine());
-        int[] inputSequence = new int[n];
-        Stack<Integer> myStack = new Stack<>();
-        int currentNum = 0;
-        int inputSequenceIdx = 0;
-
-        for(int i=0; i<n; i++) {
-            inputSequence[i] = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
+        int[]A = new int[N];
+        for (int i = 0; i < N; i++) {
+            A[i] = Integer.parseInt(br.readLine());
         }
-
-        while(currentNum <= n) {
-            currentNum++;
-            myStack.push(currentNum);
-            sb.append("+").append("\n");
-
-            while(!myStack.isEmpty()) {
-                int checkNum = myStack.peek();
-                if(checkNum == inputSequence[inputSequenceIdx]) {
-                    myStack.pop();
-                    sb.append("-").append("\n");
-                    inputSequenceIdx++;
-                    if(inputSequenceIdx == n) {
-                        bw.write(sb.toString());
-                        bw.flush();
-                        bw.close();
-                        return;
-                    }
-                }else {
+        Stack<Integer> stack = new Stack<>();
+        StringBuffer bf = new StringBuffer();
+        int num = 1; // 오름차순 수
+        boolean result = true;
+        for (int i = 0; i < A.length; i++) {
+            int su = A[i]; // 현재 수열의 수
+            if (su >= num) { //현재 수열 값 >= 오름차순 자연수 : 값이 같아 질 때까지 push()수행
+                while (su >= num) { // push()
+                    stack.push(num++);
+                    bf.append("+\n");
+                }
+                stack.pop();
+                bf.append("-\n");
+            }
+            else {  //현재 수열 값 < 오름차순 자연수: pop()을 수행하여 수열 원소를 꺼냅니다
+                int n = stack.pop();
+                // 스택의 가장 위의 수가 만들어야 하는 수열의 수 보다 크다면 수열 출력 불가능
+                if (n > su) {
+                    bw.write("NO");
+                    result = false;
                     break;
+                } //
+                else {
+                    bf.append("-\n");
                 }
             }
         }
-        bw.write("NO");
-
+        if (result)  {
+            bw.write(bf.toString());
+        }
         bw.flush();
         bw.close();
     }
