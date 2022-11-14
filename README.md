@@ -36,7 +36,7 @@
     - 출력 : `System.out.print` → `BufferedWriter`
     - 문자열 합치기 : `String class의 +` → `StringBuilder`
 3. 문제에서 인덱스가 `0`이 아닌 `1`부터 시작한다면, 배열에서도 같은 방식을 따르는게 좋음
-
+4. 모든 경우의 수를 세지않고, 이전 경우의 결과를 이용하면 쉽게 풀리는 문제 존재
 # 알고리즘 종류
 
 ## Data Structure
