@@ -15,7 +15,7 @@ import java.util.*;
  * 3. 자료구조
  * 문자열이 변환된 이진수 저장 : ArrayList
  * */
-class Unary {
+class C_Unary {
     public static void main(String args[]) throws Exception {
         Scanner in = new Scanner(System.in);
         String MESSAGE = in.nextLine();
