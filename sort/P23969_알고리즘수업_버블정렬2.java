@@ -49,6 +49,7 @@ public class P23969_알고리즘수업_버블정렬2 {
                     if (changedCount == K) {
                         kChanged = true;
                         printArray(A, 1, N);
+                        break;
                     }
                 }
             }
