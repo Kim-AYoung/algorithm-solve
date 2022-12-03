@@ -3,13 +3,15 @@ package sort;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
+
 /** 버블소트 오름차순으로 구현하기
  * 1. 아이디어
  * * 가장 큰 값 즉, 마지막 인덱스에 올 값부터 차례대로 찾는다.
  * * 1. 앞에서부터 현재 원소와 바로 다음 원소를 비교한다.
  * * * 현재 원소가 다음 원소보다 크면 교환한다.
- * * * 만약, k번째 교환이라면 두 원소를 출력하고 끝마친다.
+ * * * 만약, k번째 교환이라면 교환이 발생한 직후의 배열을 출력한다.
  * * 2. 다음 원소로 이동한 뒤, 1번으로 돌아간다.
  * * 만약, 바뀐 원소가 없다면 정렬을 끝마친다.
  * * 끝마친 후, k보다 작은 횟수로 교환했다면 -1을 출력한다.
@@ -19,7 +21,7 @@ import java.util.StringTokenizer;
  * O(n^2)
  * 빅오메가(n)
  * */
-public class P23968_알고리즘수업_버블정렬1 {
+public class P23969_알고리즘수업_버블정렬2 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -45,8 +47,7 @@ public class P23968_알고리즘수업_버블정렬1 {
                     changedCount++;
                     if (changedCount == K) {
                         kChanged = true;
-                        System.out.println(A[j] + " " + A[j + 1]);
-                        break;
+                        printArray(A, 1, N);
                     }
                 }
             }
@@ -68,5 +69,13 @@ public class P23968_알고리즘수업_버블정렬1 {
         int t = arr[a];
         arr[a] = arr[b];
         arr[b] = t;
+    }
+
+    private static void printArray(int[] arr, int start, int end) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = start; i <= end; i++) {
+            sb.append(arr[i]).append(' ');
+        }
+        System.out.println(sb);
     }
 }
