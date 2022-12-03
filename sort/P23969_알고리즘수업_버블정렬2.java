@@ -3,10 +3,10 @@ package sort;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
-/** 버블소트 오름차순으로 구현하기
+/**
+ * 버블소트 오름차순으로 구현하기
  * 1. 아이디어
  * * 가장 큰 값 즉, 마지막 인덱스에 올 값부터 차례대로 찾는다.
  * * 1. 앞에서부터 현재 원소와 바로 다음 원소를 비교한다.
@@ -16,11 +16,12 @@ import java.util.StringTokenizer;
  * * 만약, 바뀐 원소가 없다면 정렬을 끝마친다.
  * * 끝마친 후, k보다 작은 횟수로 교환했다면 -1을 출력한다.
  * 2. 자료구조
- *
+ * 정렬을 진행할 배열
+ * <p>
  * 3. 시간복잡도
  * O(n^2)
  * 빅오메가(n)
- * */
+ */
 public class P23969_알고리즘수업_버블정렬2 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -51,7 +52,7 @@ public class P23969_알고리즘수업_버블정렬2 {
                     }
                 }
             }
-            if(kChanged) {
+            if (kChanged) {
                 break;
             }
 
@@ -60,7 +61,7 @@ public class P23969_알고리즘수업_버블정렬2 {
             }
         }
 
-        if(!kChanged) {
+        if (!kChanged) {
             System.out.println("-1");
         }
     }
