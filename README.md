@@ -34,8 +34,6 @@
   - [Greedy](#greedy)
   - [DP (Dynamic Programming)](#dp-dynamic-programming)
 
-# 알고리즘
-
 # 시간 복잡도
 
 : 문제를 해결하는 데 걸리는 시간과 입력의 함수 관계
