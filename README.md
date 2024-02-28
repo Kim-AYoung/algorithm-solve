@@ -75,6 +75,7 @@
 # 코테 Tip!
 
 1. 안전하게 `int` 대신 `long` 을 사용
+    - `long`으로도 안되면, `BigInteger` 사용
 2. 입력데이터가 많을 때, 성능을 올리는 방법
     - 입력 : `Scanner`→ `BufferedReader`
     - 출력 : `System.out.print` → `BufferedWriter`
@@ -189,7 +190,11 @@
 
 - nCr = n-1Cr-1 + n-1Cr
     - nC0 = 1
-- 시간복잡도 = nC1 + nC2 + … + nCn = O(2^n)
+- 시간복잡도
+    
+    ![조합 시간복잡도](https://prod-files-secure.s3.us-west-2.amazonaws.com/5e48b95f-75d4-454c-9ae8-29740126d0a6/0923a9f3-d5ce-425b-a0cd-2aed0a37b8b9/Untitled.png)
+    
+    - nC1 + nC2 + … + nCn = O(2^n)
 - **코드**
     - 선택 원소의 수가 고정되어 있고 적으면 반복문, 이외의 경우에는 재귀를 사용한다.
     - 반복문
