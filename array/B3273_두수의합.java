@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
+ * 문제 : https://www.acmicpc.net/problem/3273
  * 시간복잡도 = O(n)
  */
 public class B3273_두수의합 {
