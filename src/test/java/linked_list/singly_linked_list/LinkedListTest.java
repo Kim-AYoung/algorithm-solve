@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class LinkedListTest {
-
     private static LinkedList<Integer> linkedList;
 
     @BeforeAll
@@ -89,7 +88,7 @@ class LinkedListTest {
     void removeWithIndex() {
         linkedList.remove(2);
         linkedList.remove(0);
-        linkedList.remove(linkedList.size()-1);
+        linkedList.remove(linkedList.size() - 1);
 
         assertThat(linkedList.toString()).isEqualTo("[8, 1]");
     }
