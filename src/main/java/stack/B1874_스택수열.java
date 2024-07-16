@@ -21,30 +21,19 @@ public class B1874_스택수열 {
         for (int i = 0; i < n; i++) {
             int target = Integer.parseInt(br.readLine());
 
-            while (sequence < target) {
+            while (sequence <= target) {
                 stack.add(sequence);
                 output.append("+")
                         .append("\n");
                 sequence++;
             }
-            if (sequence == target) {
-                stack.add(sequence);
-                output.append("+")
-                        .append("\n");
+            int removedNumber = stack.removeLast();
+            output.append("-")
+                    .append("\n");
 
-                stack.removeLast();
-                output.append("-")
-                        .append("\n");
-                sequence++;
-            } else {
-                int removedNumber = stack.removeLast();
-                output.append("-")
-                        .append("\n");
-
-                if (removedNumber != target) {
-                    System.out.println("NO");
-                    return;
-                }
+            if (removedNumber != target) {
+                System.out.println("NO");
+                return;
             }
         }
 
