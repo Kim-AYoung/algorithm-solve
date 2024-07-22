@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 /**
  * 문제 : https://www.acmicpc.net/problem/10828
+ * 알고리즘 : 자바 util에 존재하는 Stack 클래스를 이용해도되지만, 배열 기반의 스택을 직접 구현하여 풀이하였다.
  * 시간복잡도 = O(N)
  */
 public class B10828_스택 {
