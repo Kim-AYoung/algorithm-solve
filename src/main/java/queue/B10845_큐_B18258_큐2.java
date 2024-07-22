@@ -6,16 +6,17 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * 문제 : https://www.acmicpc.net/problem/10845
+ * 문제 : https://www.acmicpc.net/problem/10845, https://www.acmicpc.net/problem/18258
  * 알고리즘 : 자바의 ArrayDeque 클래스를 이용해도되지만, 배열 기반의 큐를 직접 구현하여 풀이하였다.
  * 시간복잡도 = O(N)
  */
-public class B10845_큐 {
+public class B10845_큐_B18258_큐2 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
         int N = Integer.parseInt(br.readLine());
-        int[] queue = new int[10000];
+        int[] queue = new int[10000]; // B10845_큐
+//        int[] queue = new int[10000]; // B18258_큐2
         int head = 0;
         int tail = 0;
         StringBuilder sb = new StringBuilder();
