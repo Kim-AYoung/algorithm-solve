@@ -1,4 +1,4 @@
-package queue;
+package queue_deque;
 
 import java.io.BufferedReader;
 import java.io.IOException;
