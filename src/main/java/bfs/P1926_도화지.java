@@ -71,7 +71,7 @@ public class P1926_도화지 {
         return areaOfPicture;
     }
 
-    static class Point {
+    private static class Point {
         int x, y;
 
         Point(int x, int y) {

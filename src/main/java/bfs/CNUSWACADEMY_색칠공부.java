@@ -74,7 +74,7 @@ public class CNUSWACADEMY_색칠공부 {
         }
     }
 
-    static class Point {
+    private static class Point {
         int x, y;
 
         Point(int x, int y) {
