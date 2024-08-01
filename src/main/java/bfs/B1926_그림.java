@@ -51,13 +51,14 @@ public class B1926_그림 {
 
     private static void bfs(int x, int y) {
         ArrayDeque<Point> queue = new ArrayDeque<>();
-        int size = 1;
+        int size = 0;
 
         visit[x][y] = true;
         queue.add(new Point(x, y));
 
         while (!queue.isEmpty()) {
             Point cur = queue.pop();
+            size++;
 
             for (int dir = 0; dir < 4; dir++) {
                 int nx = cur.x + dx[dir];
@@ -66,7 +67,6 @@ public class B1926_그림 {
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
                 if (visit[nx][ny] || board[nx][ny] != 1) continue;
 
-                size++;
                 visit[nx][ny] = true;
                 queue.add(new Point(nx, ny));
             }
