@@ -1,5 +1,6 @@
 package bfs;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,7 +18,7 @@ public class B2178_미로탐색 {
     static int n;
     static int m;
     static int[][] board;
-    static boolean[][] visit;
+    static int[][] dist;
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, 1, 0, -1};
 
@@ -26,52 +27,39 @@ public class B2178_미로탐색 {
         n = parseInt(st.nextToken());
         m = parseInt(st.nextToken());
         board = new int[n][m];
-        visit = new boolean[n][m];
+        dist = new int[n][m];
 
         for (int i = 0; i < n; i++) {
             char[] charArray = br.readLine().toCharArray();
             for (int j = 0; j < m; j++) {
                 board[i][j] = Character.getNumericValue(charArray[j]);
+                dist[i][j] = -1;
             }
         }
 
-        System.out.println(bfs(0, 0));
+        bfs(0, 0);
+        System.out.println(dist[n - 1][m - 1] + 1);
     }
 
-    private static int bfs(int x, int y) {
+    private static void bfs(int x, int y) {
         ArrayDeque<Point> queue = new ArrayDeque<>();
 
-        visit[x][y] = true;
-        queue.add(new Point(x, y, 1));
+        dist[x][y] = 0;
+        queue.add(new Point(x, y));
 
         while (!queue.isEmpty()) {
             Point cur = queue.pop();
-            if (cur.x == n - 1 && cur.y == m - 1) return cur.len;
 
             for (int dir = 0; dir < 4; dir++) {
                 int nx = cur.x + dx[dir];
                 int ny = cur.y + dy[dir];
 
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
-                if (visit[nx][ny] || board[nx][ny] != 1) continue;
+                if (dist[nx][ny] >= 0 || board[nx][ny] != 1) continue;
 
-                visit[nx][ny] = true;
-                queue.add(new Point(nx, ny, cur.len + 1));
+                dist[nx][ny] = dist[cur.x][cur.y] + 1;
+                queue.add(new Point(nx, ny));
             }
-        }
-
-        return 0;
-    }
-
-    private static class Point {
-        int x;
-        int y;
-        int len;
-
-        public Point(int x, int y, int len) {
-            this.x = x;
-            this.y = y;
-            this.len = len;
         }
     }
 }
