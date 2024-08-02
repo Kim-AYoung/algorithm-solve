@@ -29,35 +29,23 @@ public class B7576_토마토 {
         board = new int[n][m];
         dist = new int[n][m];
 
-        int zeroCnt = 0;
         for (int i = 0; i < n; i++) {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
                 board[i][j] = parseInt(st.nextToken());
-                if (board[i][j] == 0) zeroCnt++;
-                dist[i][j] = -1;
+                if (board[i][j] == 0) dist[i][j] = -1;
             }
-        }
-
-        if (zeroCnt == 0) {
-            System.out.println(0);
-            return;
         }
 
         bfs();
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (board[i][j] == 0 && dist[i][j] == -1) {
-                    System.out.println(-1);
-                    return;
-                }
-            }
-        }
-
         int max = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
+                if (dist[i][j] == -1) {
+                    System.out.println(-1);
+                    return;
+                }
                 max = Math.max(max, dist[i][j]);
             }
         }
@@ -71,7 +59,6 @@ public class B7576_토마토 {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (board[i][j] == 1) {
-                    dist[i][j] = 0;
                     queue.add(new Point(i, j));
                 }
             }
@@ -85,7 +72,7 @@ public class B7576_토마토 {
                 int ny = cur.y + dy[dir];
 
                 if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
-                if (board[nx][ny] == -1 || dist[nx][ny] >= 0) continue;
+                if (dist[nx][ny] >= 0) continue;
 
                 dist[nx][ny] = dist[cur.x][cur.y] + 1;
                 queue.add(new Point(nx, ny));
