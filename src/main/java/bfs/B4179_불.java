@@ -1,5 +1,6 @@
 package bfs;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,7 +19,7 @@ public class B4179_불 {
     static int m;
     static char[][] board;
     static int[][] jihoonDist;
-    static int[][] fireVisited;
+    static int[][] fireDist;
     static int[] dx = {1, 0, -1, 0};
     static int[] dy = {0, 1, 0, -1};
 
@@ -28,10 +29,9 @@ public class B4179_불 {
         m = parseInt(st.nextToken());
         board = new char[n][m];
         jihoonDist = new int[n][m];
-        fireVisited = new int[n][m];
-        ArrayDeque<Point> queue = new ArrayDeque<>();
-        int ans = Integer.MAX_VALUE;
-        Point jihoon = null;
+        fireDist = new int[n][m];
+        ArrayDeque<Point> jihoonQueue = new ArrayDeque<>();
+        ArrayDeque<Point> fireQueue = new ArrayDeque<>();
 
         for (int i = 0; i < n; i++) {
             char[] charArray = br.readLine().toCharArray();
@@ -40,58 +40,53 @@ public class B4179_불 {
 
                 if (board[i][j] == '.') {
                     jihoonDist[i][j] = -1;
-                } else if (board[i][j] == '#') {
-                    fireVisited[i][j] = 1;
-                } else if (board[i][j] == 'F') {
-                    queue.add(new Point('F', i, j));
-                    fireVisited[i][j] = 1;
+                    fireDist[i][j] = -1;
                 } else if (board[i][j] == 'J') {
-                    jihoon = new Point('J', i, j);
+                    jihoonQueue.add(new Point(i, j));
+                } else if (board[i][j] == 'F') {
+                    fireQueue.add(new Point(i, j));
                 }
             }
         }
-        queue.add(jihoon);
 
-        while (!queue.isEmpty()) {
-            Point cur = queue.pop();
+        while (!fireQueue.isEmpty()) {
+            Point cur = fireQueue.pop();
 
             for (int dir = 0; dir < 4; dir++) {
                 int nx = cur.x + dx[dir];
                 int ny = cur.y + dy[dir];
 
-                if (cur.type == 'F') {
-                    if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
-                    if (fireVisited[nx][ny] != 0) continue;
+                if (nx < 0 || nx >= n || ny < 0 || ny >= m) continue;
+                if (fireDist[nx][ny] != -1) continue;
 
-                    fireVisited[nx][ny] = 1;
-                    queue.add(new Point('F', nx, ny));
-                } else if (cur.type == 'J') {
-                    if (nx < 0 || nx >= n || ny < 0 || ny >= m) {
-                        ans = Math.min(ans, jihoonDist[cur.x][cur.y] + 1);
-                        continue;
-                    }
-                    if (jihoonDist[nx][ny] != -1 || fireVisited[nx][ny] == 1) {
-                        continue;
-                    }
-
-                    jihoonDist[nx][ny] = jihoonDist[cur.x][cur.y] + 1;
-                    queue.add(new Point('J', nx, ny));
-                }
+                fireDist[nx][ny] = fireDist[cur.x][cur.y] + 1;
+                fireQueue.add(new Point(nx, ny));
             }
         }
 
-        System.out.println(ans == Integer.MAX_VALUE ? "IMPOSSIBLE" : ans);
-    }
+        while (!jihoonQueue.isEmpty()) {
+            Point cur = jihoonQueue.pop();
 
-    private static class Point {
-        char type;
-        int x;
-        int y;
+            for (int dir = 0; dir < 4; dir++) {
+                int nx = cur.x + dx[dir];
+                int ny = cur.y + dy[dir];
 
-        public Point(char type, int x, int y) {
-            this.type = type;
-            this.x = x;
-            this.y = y;
+                if (nx < 0 || nx >= n || ny < 0 || ny >= m) {
+                    System.out.println(jihoonDist[cur.x][cur.y] + 1);
+                    return;
+                }
+                if (jihoonDist[nx][ny] != -1) {
+                    continue;
+                }
+
+                jihoonDist[nx][ny] = jihoonDist[cur.x][cur.y] + 1;
+                if (fireDist[nx][ny] != -1 && board[nx][ny] != '#' && fireDist[nx][ny] <= jihoonDist[nx][ny]) {
+                    continue;
+                }
+                jihoonQueue.add(new Point(nx, ny));
+            }
         }
+
+        System.out.println("IMPOSSIBLE");
     }
 }
