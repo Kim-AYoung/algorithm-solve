@@ -41,8 +41,7 @@ public class B4179_불 {
                 if (board[i][j] == '.') {
                     jihoonDist[i][j] = -1;
                 } else if (board[i][j] == '#') {
-                    jihoonDist[i][j] = -2;
-                    fireVisited[i][j] = -1;
+                    fireVisited[i][j] = 1;
                 } else if (board[i][j] == 'F') {
                     queue.add(new Point('F', i, j));
                     fireVisited[i][j] = 1;
