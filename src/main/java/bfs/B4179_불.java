@@ -80,7 +80,7 @@ public class B4179_불 {
                 }
 
                 jihoonDist[nx][ny] = jihoonDist[cur.x][cur.y] + 1;
-                if (fireDist[nx][ny] != -1 && board[nx][ny] != '#' && fireDist[nx][ny] <= jihoonDist[nx][ny]) {
+                if (fireDist[nx][ny] != -1 && fireDist[nx][ny] <= jihoonDist[nx][ny]) {
                     continue;
                 }
                 jihoonQueue.add(new Point(nx, ny));
