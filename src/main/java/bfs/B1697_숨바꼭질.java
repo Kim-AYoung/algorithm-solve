@@ -28,7 +28,7 @@ public class B1697_숨바꼭질 {
         dist[N] = 0;
         queue.add(N);
 
-        while (!queue.isEmpty()) {
+        while (dist[K] == -1) {
             int cur = queue.pop();
             dx = new int[]{1, -1, cur};
 
