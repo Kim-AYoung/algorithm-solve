@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 /**
  * 문제 : https://www.acmicpc.net/problem/1074
+ * 시간복잡도 : O(logN)
  */
 public class B1074_Z {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
