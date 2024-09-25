@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 /**
  * 문제 : https://www.acmicpc.net/problem/11729
+ * 시간복잡도 : O(2^K)
  */
 public class B11729_하노이탑이동순서 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -27,19 +28,9 @@ public class B11729_하노이탑이동순서 {
             return;
         }
 
-        int remainingPlace = remainingPlace(from, to);
-        move(n - 1, from, remainingPlace(from, to));
+        int theOther = 6 - from - to;
+        move(n - 1, from, theOther);
         move(1, from, to);
-        move(n - 1, remainingPlace, to);
-    }
-
-    private static int remainingPlace(int place1, int place2) {
-        int[] place = {1, 2, 3};
-        for (int i : place) {
-            if (i != place1 && i != place2) {
-                return i;
-            }
-        }
-        return 0;
+        move(n - 1, theOther, to);
     }
 }
