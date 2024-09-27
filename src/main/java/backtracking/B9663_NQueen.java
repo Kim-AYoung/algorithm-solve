@@ -3,23 +3,25 @@ package backtracking;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 /**
  * 문제 : https://www.acmicpc.net/problem/9663
- * 시간복잡도 :
+ * 시간복잡도 : 'if (visited[i] || rightDiag[n + i] || leftDiag[n - i + N - 1])' 해당 가지치기 조건이 복잡하여 정확한 시간복잡도를 계산할 수 없지만, O(N!) 보다는 빠를 것이다.
  * 참고 : 퀸은 대각선 혹은 상하좌우에 있는 퀸을 공격할 수 있다.
  */
 public class B9663_NQueen {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static int N = 0;
     static int answer = 0;
-    static int[] visited;
+    static boolean[] visited;
+    static boolean[] rightDiag;
+    static boolean[] leftDiag;
 
     public static void main(String[] args) throws IOException {
         N = Integer.parseInt(br.readLine());
-        visited = new int[N];
-        Arrays.fill(visited, -1);
+        visited = new boolean[N];
+        rightDiag = new boolean[2 * N];
+        leftDiag = new boolean[2 * N];
 
         queen(0);
         System.out.println(answer);
@@ -32,18 +34,15 @@ public class B9663_NQueen {
         }
 
         for (int i = 0; i < N; i++) {
-            if (visited[i] > -1) continue;
-            boolean existDiagonal = false;
-            for (int j = 0; j < N; j++) {
-                if (visited[j] > -1 && n - visited[j] == Math.abs(i - j)) {
-                    existDiagonal = true;
-                    break;
-                }
-            }
-            if (existDiagonal) continue;
-            visited[i] = n;
+            if (visited[i] || rightDiag[n + i] || leftDiag[n - i + N - 1]) continue;
+
+            visited[i] = true;
+            rightDiag[n + i] = true;
+            leftDiag[n - i + N - 1] = true;
             queen(n + 1);
-            visited[i] = -1;
+            visited[i] = false;
+            rightDiag[n + i] = false;
+            leftDiag[n - i + N - 1] = false;
         }
     }
 }
