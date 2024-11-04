@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 
 /**
  * 문제 : https://www.acmicpc.net/problem/15650
- * 시간복잡도 :
+ * 시간복잡도 : O(2^n)
  */
 public class B15650_N과M2_별해 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
