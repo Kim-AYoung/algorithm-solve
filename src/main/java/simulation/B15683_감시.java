@@ -44,6 +44,7 @@ public class B15683_감시 {
         System.out.println(out);
     }
 
+    // TODO 모든 경우의 수를 순회하기 위해 dfs 대신 진법을 이용한 반복문으로 풀이할 수 있다.
     private static void dfs(int cctvIdx) {
         if (cctvIdx == cctvList.size()) {
             int cnt = 0;
