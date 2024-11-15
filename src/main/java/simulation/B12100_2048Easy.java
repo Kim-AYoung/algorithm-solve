@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 
 /**
  * 문제 : https://www.acmicpc.net/problem/12100
+ * 별해 : 블럭을 이동시키는 방향에 따라 조건문을 구현하는 것이 아니라, 배열을 회전한다면 한 방향에 대해서만 블럭을 이동시키는 코드만 구현할 수 있다.
  */
 public class B12100_2048Easy {
     static int n;
