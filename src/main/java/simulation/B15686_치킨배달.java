@@ -8,13 +8,6 @@ import java.util.StringTokenizer;
 
 /**
  * 문제 : https://www.acmicpc.net/problem/15686
- * <p>
- * 도시 : 빈칸, 치킨집, 집
- * 집하고 가장 가까운 치킨집과의 거리 = 치킨 거리
- * <p>
- * 1. 치킨집들 중 m개를 선택한다.
- * 2. 각각 집의 치킨 거리를 구한다.
- * 3. 그 중 최소가 답이 된다.
  */
 public class B15686_치킨배달 {
     static int n;
