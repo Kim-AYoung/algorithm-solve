@@ -6,25 +6,10 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * 1. 아이디어
- * * 1. 배열을 반으로 나눠 각각을 정렬한다.
- * * 2. 두 배열을 병합한다.
- * * * 1. 두 배열에 포인터를 둔다. 이때 첫번째 원소부터 시작한다.
- * * * 2. 작은 원소를 temp 배열에 담는다.
- * * * 3. 한 배열의 원소들을 모두 담을 때까지 반복한다.
- * * * 4. 아직 남은 원소가 존재하는 배열의 남은 원소들을 모두 temp 배열에 담는다.
- * * * 5. temp 배열의 결과를 원본 배열에 복사한다.
- * * * * 이때, k번째 저장하는 경우에 저장한 원소를 출력하고 종료한다.
- * * 3. 마지막까지 종료하지 못한 경우, -1을 출력한다.
- * <p>
- * 2. 자료구조
- * 정렬할 배열
- * 병합한 결과를 담을 temp 배열
- * <p>
- * 3. 시간복잡도
- * O(nlogn)
+ * 문제 : https://www.acmicpc.net/problem/24060
+ * 시간복잡도 = O(nlogn)
  */
-public class P24060_알고리즘수업_병합정렬1 {
+public class B24060_알고리즘수업_병합정렬 {
     private static int countSave = 0;
     private static int K;
 

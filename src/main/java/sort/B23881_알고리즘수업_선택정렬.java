@@ -6,21 +6,10 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * 1. 아이디어
- * * 1. 1번째부터 N번째 수중에 가장 큰 수를 찾는다.
- * * 이떄 N-1번 가장 큰수를 갱신했다면 정렬이 이미 완료된 경우이므로 끝마친다.
- * * 2. N번째 수와 교환한다.
- * * * 가장 큰 수가 N번째에 있다면 교환하지 않는다.
- * * * 교환 횟수가 K라면 교환된 후의 배열을 출력한다.
- * * 3. 1번으로 돌아가 반복한다. 이때 N은 1씩 줄어들며 2까지 줄어든다.
- * 2. 자료구조
- * 정렬을 진행할 배열
- * <p>
- * 3. 시간복잡도
- * O(n^2)
- * 빅 오메가(n)
+ * 문제 : https://www.acmicpc.net/problem/23881
+ * 시간복잡도 = O(n^2), 빅 오메가(n)
  */
-public class P23882_알고리즘수업_선택정렬2 {
+public class B23881_알고리즘수업_선택정렬 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -52,8 +41,8 @@ public class P23882_알고리즘수업_선택정렬2 {
                 countChanged++;
                 swap(A, maxIndex, i);
                 if (countChanged == K) {
+                    System.out.println(A[maxIndex] + " " + A[i]);
                     kChanged = true;
-                    printArray(A, 1, N);
                     break;
                 }
             }
@@ -67,13 +56,5 @@ public class P23882_알고리즘수업_선택정렬2 {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-    }
-
-    private static void printArray(int[] arr, int start, int end) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = start; i <= end; i++) {
-            sb.append(arr[i]).append(' ');
-        }
-        System.out.println(sb);
     }
 }

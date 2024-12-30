@@ -4,22 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
-/** 버블소트 오름차순으로 구현하기
- * 1. 아이디어
- * * 가장 큰 값 즉, 마지막 인덱스에 올 값부터 차례대로 찾는다.
- * * 1. 앞에서부터 현재 원소와 바로 다음 원소를 비교한다.
- * * * 현재 원소가 다음 원소보다 크면 교환한다.
- * * * 만약, k번째 교환이라면 두 원소를 출력하고 끝마친다.
- * * 2. 다음 원소로 이동한 뒤, 1번으로 돌아간다.
- * * 만약, 바뀐 원소가 없다면 정렬을 끝마친다.
- * * 끝마친 후, k보다 작은 횟수로 교환했다면 -1을 출력한다.
- * 2. 자료구조
- * 정렬을 진행할 배열
- * 3. 시간복잡도
- * O(n^2)
- * 빅오메가(n)
+/**
+ * 문제 : https://www.acmicpc.net/problem/23968
+ * 시간복잡도 = O(n^2), 빅오메가(n)
  * */
-public class P23968_알고리즘수업_버블정렬1 {
+public class B23968_알고리즘수업_버블정렬 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
