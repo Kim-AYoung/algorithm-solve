@@ -15,7 +15,8 @@ public class B1463_1로만들기 {
         int x = Integer.parseInt(br.readLine());
         int[] minOperationCnt = new int[x + 1];
 
-        for (int i = 2; i < minOperationCnt.length; i++) {
+        minOperationCnt[1] = 0;
+        for (int i = 2; i <= x; i++) {
             minOperationCnt[i] = minOperationCnt[i - 1];
             if (i % 3 == 0) minOperationCnt[i] = Math.min(minOperationCnt[i], minOperationCnt[i / 3]);
             if (i % 2 == 0) minOperationCnt[i] = Math.min(minOperationCnt[i], minOperationCnt[i / 2]);
