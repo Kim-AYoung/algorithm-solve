@@ -11,9 +11,6 @@ public class B2579_계단오르기 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        // d[i] = max(d[i-1], d[i-2]) + score[i]
-        // d[1] = score[1]
-
         int n = Integer.parseInt(br.readLine());
         int[] score = new int[n + 1];
         int[][] d = new int[n + 1][3];
