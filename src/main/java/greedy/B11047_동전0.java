@@ -6,20 +6,9 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * 1. 아이디어
- * - 큰 금액의 동전부터 차감
- * - K를 동전 금액으로 나눈 몫을 동전 사용 개수에 추가
- * - K를 동전 금액으로 나눈 나머지로 갱신
- *
- * 2. 시간복잡도
- * - O(N)
- *
- * 3. 자료구조
- * - 동전 종류 : int[N]
- * - 현재 남은 금액 : int
- * - 동전 개수 : int
- * */
-public class P11047_동전0 {
+ * 문제 : https://www.acmicpc.net/problem/11047
+ */
+public class B11047_동전0 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
