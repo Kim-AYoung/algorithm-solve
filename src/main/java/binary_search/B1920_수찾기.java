@@ -12,13 +12,13 @@ import java.util.StringTokenizer;
  */
 public class B1920_수찾기 {
     static int[] A;
-    static StringBuilder sb = new StringBuilder();
+    static int N;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int N = Integer.parseInt(br.readLine());
-
+        N = Integer.parseInt(br.readLine());
         A = new int[N];
+
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             A[i] = Integer.parseInt(st.nextToken());
@@ -27,26 +27,28 @@ public class B1920_수찾기 {
 
         int M = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < M; i++) {
-            search(0, N - 1, Integer.parseInt(st.nextToken()));
+            int target = Integer.parseInt(st.nextToken());
+            sb.append(binarySearch(target) ? 1 : 0).append("\n");
         }
 
         System.out.println(sb);
     }
 
-    private static void search(int start, int end, int target) {
-        if (start > end) {
-            sb.append(0).append("\n");
-            return;
+    private static boolean binarySearch(int target) {
+        int s = 0;
+        int e = N - 1;
+        while (s <= e) {
+            int mid = (s + e) / 2;
+            if (A[mid] < target) {
+                s = mid + 1;
+            } else if (A[mid] > target) {
+                e = mid - 1;
+            } else {
+                return true;
+            }
         }
-
-        int mid = (start + end) / 2;
-        if (A[mid] < target) {
-            search(mid + 1, end, target);
-        } else if (A[mid] > target) {
-            search(start, mid - 1, target);
-        } else {
-            sb.append(1).append("\n");
-        }
+        return false;
     }
 }
