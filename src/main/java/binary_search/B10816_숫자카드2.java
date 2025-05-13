@@ -39,22 +39,7 @@ public class B10816_숫자카드2 {
 
         for (int i = 0; i < M; i++) {
             if (!cntMap.containsKey(arr[i])) {
-                int index = Arrays.binarySearch(numberCards, arr[i]);
-                int cnt = 0;
-                if (index > -1) {
-                    cnt++;
-                    int left = index;
-                    while (--left >= 0) {
-                        if (numberCards[left] == arr[i]) cnt++;
-                        else break;
-                    }
-                    int right = index;
-                    while (++right < N) {
-                        if (numberCards[right] == arr[i]) cnt++;
-                        else break;
-                    }
-                }
-                cntMap.put(arr[i], cnt);
+                cntMap.put(arr[i], upperIdx(arr[i]) - lowerIdx(arr[i]));
             }
         }
 
@@ -63,5 +48,33 @@ public class B10816_숫자카드2 {
             sb.append(cntMap.get(arr[i])).append(" ");
         }
         System.out.println(sb);
+    }
+
+    private static int upperIdx(int target) {
+        int start = 0;
+        int end = N;
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (numberCards[mid] > target) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
+
+    private static int lowerIdx(int target) {
+        int start = 0;
+        int end = N;
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (numberCards[mid] >= target) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
     }
 }
