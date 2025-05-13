@@ -4,8 +4,7 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 /**
- * 문제 : https://www.acmicpc.net/problem/15651
- * 시간복잡도 :
+ * 문제 : https://www.acmicpc.net/problem/15652
  */
 public class B15652_N과M4 {
     static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
