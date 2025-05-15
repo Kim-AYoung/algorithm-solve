@@ -7,6 +7,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+/**
+ * 문제 : https://www.acmicpc.net/problem/18870
+ * 시긴복잡도 = O(NlogN)
+ */
 public class B18870_좌표압축 {
     public static void main(String[] args) throws IOException {
 
